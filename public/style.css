@@ -1,4 +1,6 @@
 /* style.css */
+
+/* === Reset Básico & Configurações Globais === */
 * {
     margin: 0;
     padding: 0;
@@ -8,32 +10,35 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #333;
+    color: #333; /* Cor de texto padrão */
     line-height: 1.6;
     padding: 20px;
     min-height: 100vh;
+    font-size: 16px; /* Base para REMs se necessário */
 }
 
 .container {
     max-width: 900px;
     margin: 30px auto;
     background: #fff;
-    padding: 30px;
+    padding: 30px 40px; /* Mais padding lateral */
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12); /* Sombra um pouco mais pronunciada */
 }
 
+/* === Cabeçalho === */
 header {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 40px; /* Mais espaço abaixo do header */
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0; /* Borda mais suave */
 }
 
 header h1 {
     color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 2.5rem;
+    margin-bottom: 12px;
+    font-size: 2.4rem; /* Levemente ajustado */
+    font-weight: 600; /* Um pouco mais de peso */
 }
 
 header p {
@@ -41,59 +46,137 @@ header p {
     color: #555;
 }
 
+/* === Seção de Inputs === */
 .input-section h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #34495e;
-    font-size: 1.8rem;
+    font-size: 1.7rem; /* Levemente ajustado */
 }
 
-textarea, input[type="text"] {
+textarea,
+input[type="text"] {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
+    padding: 14px; /* Ajustado */
+    margin-bottom: 18px; /* Ajustado */
+    border: 1px solid #ccc; /* Borda um pouco mais escura */
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
     resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
 textarea {
-    min-height: 120px;
+    min-height: 140px; /* Aumentado */
 }
 
-#generateButton {
+/* Seleção de Plataforma */
+.form-group.platform-selection {
+    margin-top: 20px;
+    margin-bottom: 30px; /* Aumentado */
+    background-color: #f8f9ff; /* Fundo mais suave */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e3e8ff; /* Borda correspondente ao fundo */
+}
+
+.platform-label {
     display: block;
-    width: 100%;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.radio-group {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.radio-group div {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #667eea;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.radio-group label {
+    font-weight: normal;
+    color: #495057;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* Botões de Ação */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+#generateButton,
+.secondary-button {
+    flex-grow: 1;
     padding: 15px;
-    background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-weight: 600; /* Ajustado */
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
-#generateButton:hover {
-    background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+#generateButton {
+    background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+    box-shadow: 0 4px 10px rgba(22, 160, 133, 0.3);
+}
+#generateButton:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1dd2af 0%, #18b99a 100%); /* Hover mais claro */
     transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(22, 160, 133, 0.4);
 }
-
 #generateButton:disabled {
     background: #bdc3c7;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
+.secondary-button {
+    background-color: #7f8c8d;
+    border: 1px solid #717e7e; /* Removido para consistência, a menos que queira borda */
+    box-shadow: 0 4px 10px rgba(127, 140, 141, 0.2);
+}
+.secondary-button:hover {
+    background-color: #95a5a6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(127, 140, 141, 0.3);
+}
+
+/* === Seções de Feedback (Loading, Error) === */
 .loading-section {
     text-align: center;
     padding: 40px 0;
+    color: #555;
 }
 
 .spinner {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #3498db;
+    border: 6px solid #f0f0f0; /* Cor de base mais clara */
+    border-top: 6px solid #667eea; /* Cor principal */
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -107,40 +190,55 @@ textarea {
 }
 
 .error-section {
-    background-color: #ffebee;
-    color: #c62828;
-    padding: 15px;
+    background-color: #fff0f0; /* Fundo de erro mais suave */
+    color: #c0392b; /* Vermelho mais escuro para texto */
+    padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
-    border: 1px solid #ef9a9a;
+    margin-top: 25px;
+    border: 1px solid #e74c3c; /* Borda vermelha */
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.1);
+}
+.error-section p {
+    margin: 0;
+}
+.error-section small {
+    display: block; /* Para garantir que o margin-top funcione */
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #962d22; /* Tom mais escuro para detalhes */
+    word-break: break-word; /* Para quebrar URLs longas, etc. */
 }
 
+
+/* === Seção de Resultados === */
 .results-section {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #e0e0e0;
 }
 
 .results-section h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     color: #34495e;
 }
 
 .ad-category {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    border: 1px solid #eef;
+    background-color: #fdfdff; /* Fundo muito suave, quase branco */
+    padding: 25px;
+    border-radius: 10px; /* Bordas mais arredondadas */
+    margin-bottom: 30px;
+    border: 1px solid #e9e9f5; /* Borda muito suave */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra suave */
 }
 
 .ad-category h3 {
-    color: #2980b9;
-    margin-bottom: 15px;
+    color: #3498db; /* Cor ajustada para os títulos das categorias */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
     border-bottom: 2px solid #3498db;
-    padding-bottom: 8px;
-    display: inline-block;
+    display: inline-block; /* Para que a borda não ocupe toda a largura */
+    font-size: 1.3rem;
 }
 
 .ad-category ul {
@@ -151,157 +249,138 @@ textarea {
 .ad-category ul li {
     background-color: #fff;
     padding: 12px 15px;
-    border: 1px solid #ecf0f1;
+    border: 1px solid #e8e8e8; /* Borda suave para itens de lista */
     border-radius: 6px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    position: relative;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    position: relative; /* Para o botão de cópia */
+    display: flex; /* Para alinhar conteúdo e botão de cópia */
+    justify-content: space-between; /* Para empurrar botão de cópia para a direita */
+    align-items: center; /* Alinhar verticalmente */
+}
+
+/* Wrapper para texto e contador, para que o botão de cópia não interfira */
+.char-counter-wrapper {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px; /* Espaço antes do botão de cópia */
+    flex-wrap: wrap; /* Permite que o contador quebre linha se necessário em telas pequenas */
+}
+.char-counter-wrapper span:first-child { /* O texto principal */
+    word-break: break-word; /* Quebra palavras longas */
+}
+
+
+.char-counter {
+    font-size: 0.8em;
+    color: #777;
+    margin-left: 10px;
+    white-space: nowrap;
+    background-color: #f0f0f0; /* Fundo sutil para o contador */
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.char-counter.limit-exceeded {
+    color: #fff; /* Texto branco para contraste */
+    background-color: #e74c3c; /* Fundo vermelho */
+    font-weight: bold;
 }
 
 .copy-btn {
     background: #2ecc71;
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    padding: 6px 12px; /* Ajustado */
+    border-radius: 5px; /* Ajustado */
+    font-size: 0.85rem; /* Ajustado */
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    opacity: 0.8;
-    transition: opacity 0.2s, background-color 0.2s;
+    /* Removido position:absolute para funcionar melhor com flex no LI */
+    opacity: 0.9; /* Levemente mais visível */
+    transition: opacity 0.2s, background-color 0.2s, transform 0.2s;
+    flex-shrink: 0; /* Evita que o botão encolha */
 }
 
 .copy-btn:hover {
     background: #27ae60;
     opacity: 1;
+    transform: scale(1.05); /* Efeito sutil no hover */
 }
 
 .copy-btn.copied {
     background: #16a085;
+    content: '✅'; /* Não funciona em button, JS já faz isso */
 }
 
-/* Adicionar ao final do seu style.css */
-
-.sitelink-item-display {
-    background-color: #fff;
-    padding: 15px;
-    border: 1px solid #ecf0f1;
-    border-left: 4px solid #3498db; /* Destaque na esquerda */
-    border-radius: 6px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    position: relative; /* Para o botão de cópia absoluto se necessário */
+/* === Estilos Específicos para Sitelinks e Snippets (Renderizados pelo JS) === */
+.sitelink-item-display { /* Usado como um LI especial dentro de #sitelinksSection ul */
+    flex-direction: column; /* Empilha os elementos internos */
+    align-items: flex-start; /* Alinha à esquerda */
+    border-left: 4px solid #3498db;
+    padding: 15px; /* Padding interno para o container do sitelink */
 }
-
-.sitelink-title-display {
+.sitelink-item-display .char-counter-wrapper { /* Wrapper para título e descrições do sitelink */
+    width: 100%; /* Ocupa toda a largura dentro do sitelink-item-display */
+    margin-bottom: 5px; /* Espaço entre título/desc e botão de cópia */
+}
+.sitelink-item-display .char-counter-wrapper span:first-child { /* Texto do título/desc */
+    font-size: 0.95rem;
+}
+.sitelink-item-display .sitelink-title-display .char-counter-wrapper span:first-child {
     font-weight: bold;
     color: #2c3e50;
-    margin-bottom: 5px;
     font-size: 1.05em;
 }
-
-.sitelink-desc-display {
-    font-size: 0.95em;
-    color: #555;
-    line-height: 1.4;
-    margin-bottom: 3px;
+.sitelink-item-display .sitelink-desc-display-wrapper {
+    padding-left: 15px; /* Recuo para as descrições */
+    width: 100%;
 }
-
-/* Ajuste para botões de cópia dentro de sitelinks/snippets se precisar de posicionamento diferente */
-.sitelink-copy-btn, .snippet-copy-btn {
-    /* Se quiser que fiquem no canto como os outros: */
-    /* position: absolute; 
-       top: 10px; 
-       right: 10px; 
-       transform: none; */
-    
-    /* Ou se quiser que fiquem abaixo do conteúdo: */
-    display: inline-block; /* Ou block se quiser que ocupe a largura toda */
+.sitelink-item-display .copy-btn { /* Botão de cópia para o sitelink inteiro */
+    align-self: flex-end; /* Alinha o botão à direita */
     margin-top: 10px;
-    font-size: 0.85rem;
-    padding: 6px 12px;
 }
 
-#structuredSnippetContent {
+
+#structuredSnippetContent { /* Este é um DIV, não um LI */
     background-color: #fff;
-    padding: 15px;
-    border: 1px solid #ecf0f1;
-    border-left: 4px solid #1abc9c; /* Cor diferente para destaque */
+    padding: 20px;
+    border: 1px solid #e8e8e8;
+    border-left: 4px solid #1abc9c;
     border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
 }
-
-.snippet-header-display strong {
+#structuredSnippetContent .snippet-header-display .char-counter-wrapper span:first-child {
+    font-weight: bold;
     color: #16a085;
     font-size: 1.1em;
 }
-
-.snippet-values-list {
-    list-style: disc; /* Ou none, ou outro de sua preferência */
-    padding-left: 20px; /* Para alinhar os marcadores da lista */
-    margin-top: 8px;
+#structuredSnippetContent .snippet-values-list {
+    list-style: disc;
+    padding-left: 20px; /* Adiciona recuo para os marcadores */
+    margin-top: 10px;
 }
-
-.snippet-values-list li {
+/* Itens LI dentro da lista de valores do snippet */
+#structuredSnippetContent .snippet-values-list li {
+    background-color: transparent;
+    padding: 5px 0; /* Mais espaço vertical */
+    border: none;
+    box-shadow: none;
     margin-bottom: 5px;
-    color: #333;
-    background-color: transparent; /* Remover fundo de li genérico se houver */
-    padding: 2px 0; /* Ajustar padding */
-    border: none; /* Remover borda de li genérico se houver */
-    box-shadow: none; /* Remover sombra de li genérico se houver */
+    /* O .char-counter-wrapper já está sendo aplicado pelo JS */
 }
-
-/* ... (seus estilos existentes) ... */
-
-.form-group.platform-selection {
-    margin-top: 20px;
-    margin-bottom: 25px;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
-}
-
-.platform-label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: #343a40;
-}
-
-.radio-group {
-    display: flex;
-    gap: 20px; /* Espaço entre as opções de rádio */
-    flex-wrap: wrap;
-}
-
-.radio-group div {
-    display: flex;
-    align-items: center;
-}
-
-.radio-group input[type="radio"] {
-    margin-right: 8px;
-    accent-color: #667eea; /* Cor do rádio selecionado */
-    transform: scale(1.2);
-}
-
-.radio-group label {
-    font-weight: normal;
-    color: #495057;
-    cursor: pointer;
+#structuredSnippetContent .copy-btn { /* Botão de cópia para o snippet inteiro */
+    display: block; /* Ocupa a largura e permite margin-top */
+    margin-top: 15px;
+    width: auto; /* Não ocupa toda a largura, apenas o necessário */
+    margin-left: auto; /* Alinha à direita */
+    margin-right: 0;
 }
 
 
-/* Estilo para esconder/mostrar seções de resultado */
-.google-ads-results, .facebook-ads-results {
-    /* Por padrão, o JS controlará o display, mas podemos garantir que estão ocultos se não forem preenchidos */
-}
-
-.visually-hidden { /* Para acessibilidade do spinner */
+/* === Utilitários === */
+.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -313,68 +392,52 @@ textarea {
     border-width: 0;
 }
 
-/* Estilização para itens de lista dentro de Sitelinks e Snippets */
-.sitelink-item-display, #structuredSnippetContent div, #structuredSnippetContent ul {
-    margin-bottom: 10px;
+/* === Responsividade (Exemplo Básico) === */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    .input-section h2 {
+        font-size: 1.5rem;
+    }
+    .action-buttons {
+        flex-direction: column; /* Empilha botões em telas menores */
+    }
+    .ad-category ul li, .sitelink-item-display {
+        flex-direction: column; /* Empilha conteúdo e botão de cópia */
+        align-items: flex-start;
+    }
+    .ad-category ul li .copy-btn, 
+    .sitelink-item-display .copy-btn {
+        margin-top: 10px;
+        align-self: flex-start; /* Botão de cópia à esquerda */
+        position: static; /* Reset de posicionamento */
+        transform: none;
+    }
+    .char-counter-wrapper {
+        margin-right: 0; /* Remove margem em telas pequenas */
+    }
 }
 
-.sitelink-item-display {
-    background-color: #fff;
-    padding: 15px;
-    border: 1px solid #ecf0f1;
-    border-left: 4px solid #3498db;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    position: relative;
-}
-
-.sitelink-title-display {
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 5px;
-    font-size: 1.05em;
-}
-
-.sitelink-desc-display {
-    font-size: 0.95em;
-    color: #555;
-    line-height: 1.4;
-    margin-bottom: 3px;
-}
-
-.sitelink-copy-btn, .snippet-copy-btn {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 0.85rem;
-    padding: 6px 12px;
-}
-
-#structuredSnippetContent {
-    background-color: #fff;
-    padding: 15px;
-    border: 1px solid #ecf0f1;
-    border-left: 4px solid #1abc9c;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.snippet-header-display strong {
-    color: #16a085;
-    font-size: 1.1em;
-}
-
-.snippet-values-list {
-    list-style: disc;
-    padding-left: 20px;
-    margin-top: 8px;
-}
-
-.snippet-values-list li {
-    margin-bottom: 5px;
-    color: #333;
-    background-color: transparent;
-    padding: 2px 0;
-    border: none;
-    box-shadow: none;
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+    .container {
+        padding: 15px;
+    }
+    textarea, input[type="text"] {
+        padding: 12px;
+    }
+    #generateButton, .secondary-button {
+        font-size: 1rem;
+    }
+    .ad-category h3 {
+        font-size: 1.15rem;
+    }
 }
