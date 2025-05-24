@@ -1,0 +1,380 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.input-section h2 {
+    margin-bottom: 20px;
+    color: #34495e;
+    font-size: 1.8rem;
+}
+
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+textarea {
+    min-height: 120px;
+}
+
+#generateButton {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#generateButton:hover {
+    background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+    transform: translateY(-2px);
+}
+
+#generateButton:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.loading-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-section {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #ef9a9a;
+}
+
+.results-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.results-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #34495e;
+}
+
+.ad-category {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #eef;
+}
+
+.ad-category h3 {
+    color: #2980b9;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.ad-category ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ad-category ul li {
+    background-color: #fff;
+    padding: 12px 15px;
+    border: 1px solid #ecf0f1;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.copy-btn {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+.copy-btn:hover {
+    background: #27ae60;
+    opacity: 1;
+}
+
+.copy-btn.copied {
+    background: #16a085;
+}
+
+/* Adicionar ao final do seu style.css */
+
+.sitelink-item-display {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ecf0f1;
+    border-left: 4px solid #3498db; /* Destaque na esquerda */
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative; /* Para o botão de cópia absoluto se necessário */
+}
+
+.sitelink-title-display {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 1.05em;
+}
+
+.sitelink-desc-display {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 3px;
+}
+
+/* Ajuste para botões de cópia dentro de sitelinks/snippets se precisar de posicionamento diferente */
+.sitelink-copy-btn, .snippet-copy-btn {
+    /* Se quiser que fiquem no canto como os outros: */
+    /* position: absolute; 
+       top: 10px; 
+       right: 10px; 
+       transform: none; */
+    
+    /* Ou se quiser que fiquem abaixo do conteúdo: */
+    display: inline-block; /* Ou block se quiser que ocupe a largura toda */
+    margin-top: 10px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
+
+#structuredSnippetContent {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ecf0f1;
+    border-left: 4px solid #1abc9c; /* Cor diferente para destaque */
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.snippet-header-display strong {
+    color: #16a085;
+    font-size: 1.1em;
+}
+
+.snippet-values-list {
+    list-style: disc; /* Ou none, ou outro de sua preferência */
+    padding-left: 20px; /* Para alinhar os marcadores da lista */
+    margin-top: 8px;
+}
+
+.snippet-values-list li {
+    margin-bottom: 5px;
+    color: #333;
+    background-color: transparent; /* Remover fundo de li genérico se houver */
+    padding: 2px 0; /* Ajustar padding */
+    border: none; /* Remover borda de li genérico se houver */
+    box-shadow: none; /* Remover sombra de li genérico se houver */
+}
+
+/* ... (seus estilos existentes) ... */
+
+.form-group.platform-selection {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.platform-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px; /* Espaço entre as opções de rádio */
+    flex-wrap: wrap;
+}
+
+.radio-group div {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #667eea; /* Cor do rádio selecionado */
+    transform: scale(1.2);
+}
+
+.radio-group label {
+    font-weight: normal;
+    color: #495057;
+    cursor: pointer;
+}
+
+
+/* Estilo para esconder/mostrar seções de resultado */
+.google-ads-results, .facebook-ads-results {
+    /* Por padrão, o JS controlará o display, mas podemos garantir que estão ocultos se não forem preenchidos */
+}
+
+.visually-hidden { /* Para acessibilidade do spinner */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Estilização para itens de lista dentro de Sitelinks e Snippets */
+.sitelink-item-display, #structuredSnippetContent div, #structuredSnippetContent ul {
+    margin-bottom: 10px;
+}
+
+.sitelink-item-display {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ecf0f1;
+    border-left: 4px solid #3498db;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.sitelink-title-display {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 1.05em;
+}
+
+.sitelink-desc-display {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 3px;
+}
+
+.sitelink-copy-btn, .snippet-copy-btn {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
+
+#structuredSnippetContent {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ecf0f1;
+    border-left: 4px solid #1abc9c;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.snippet-header-display strong {
+    color: #16a085;
+    font-size: 1.1em;
+}
+
+.snippet-values-list {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+.snippet-values-list li {
+    margin-bottom: 5px;
+    color: #333;
+    background-color: transparent;
+    padding: 2px 0;
+    border: none;
+    box-shadow: none;
+}

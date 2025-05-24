@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Anúncios com Groq</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gerador de Anúncios Inteligente 🚀</h1>
+            <p>Crie textos para seus anúncios online usando o poder da IA Groq!</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2>Descreva seu Produto ou Serviço</h2>
+                <textarea id="productDescription" placeholder="Ex: Imóvel de luxo com 4 suítes, vista para o mar, em condomínio fechado com lazer completo..."></textarea>
+                
+                <label for="targetAudience">Público-Alvo (Opcional):</label>
+                <input type="text" id="targetAudience" placeholder="Ex: Famílias de alta renda, investidores, executivos">
+                
+                <div class="form-group platform-selection">
+                    <label class="platform-label">Plataforma de Anúncio:</label>
+                    <div class="radio-group">
+                        <div>
+                            <input type="radio" id="googleAdsPlatform" name="adPlatform" value="Google Ads" checked>
+                            <label for="googleAdsPlatform">Google Ads</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="facebookAdsPlatform" name="adPlatform" value="Facebook Ads">
+                            <label for="facebookAdsPlatform">Facebook Ads</label>
+                        </div>
+                        {/* Você pode adicionar mais plataformas aqui no futuro */}
+                    </div>
+                </div>
+
+                <button id="generateButton">✨ Gerar Anúncios</button>
+            </section>
+
+            <section id="loading" class="loading-section" style="display: none;" aria-live="polite" aria-atomic="true">
+                <div class="spinner" role="status"><span class="visually-hidden">Carregando...</span></div>
+                <p>Gerando seus anúncios... Isso pode levar alguns segundos.</p>
+            </section>
+
+            <section id="error" class="error-section" style="display: none;" aria-live="assertive" aria-atomic="true">
+                <p></p>
+            </section>
+
+            <section id="results" class="results-section" style="display: none;">
+                <h2>Resultados Gerados para <span id="platformResultsTitle"></span>:</h2>
+                
+                {/* Seções para Google Ads */}
+                <div class="ad-category google-ads-results" id="headlinesSection">
+                    <h3>📝 Títulos (Headlines) - Google Ads</h3>
+                    <ul></ul>
+                </div>
+                <div class="ad-category google-ads-results" id="descriptionsSection">
+                    <h3>📄 Descrições - Google Ads</h3>
+                    <ul></ul>
+                </div>
+                <div class="ad-category google-ads-results" id="sitelinksSection">
+                    <h3>🔗 Sitelinks - Google Ads</h3>
+                </div>
+                <div class="ad-category google-ads-results" id="calloutsSection">
+                    <h3>⭐ Frases de Destaque (Callouts) - Google Ads</h3>
+                    <ul></ul>
+                </div>
+                <div class="ad-category google-ads-results" id="structuredSnippetsSection">
+                    <h3>📊 Snippets Estruturados - Google Ads</h3>
+                    <div id="structuredSnippetContent"></div>
+                </div>
+                <div class="ad-category google-ads-results" id="callToActionsSection">
+                    <h3>📣 Chamadas para Ação (CTAs) - Google Ads</h3>
+                    <ul></ul>
+                </div>
+
+                {/* Seções para Facebook Ads - Inicialmente ocultas */}
+                <div class="ad-category facebook-ads-results" id="facebookPrimaryTextsSection" style="display: none;">
+                    <h3>✍️ Textos Principais - Facebook Ads</h3>
+                    <ul></ul>
+                </div>
+                <div class="ad-category facebook-ads-results" id="facebookHeadlinesSection" style="display: none;">
+                    <h3>📢 Títulos (para criativo) - Facebook Ads</h3>
+                    <ul></ul>
+                </div>
+                <div class="ad-category facebook-ads-results" id="facebookLinkDescriptionsSection" style="display: none;">
+                    <h3>🔗 Descrições de Link - Facebook Ads</h3>
+                    <ul></ul>
+                </div>
+                 <div class="ad-category facebook-ads-results" id="facebookCTAsSection" style="display: none;">
+                    <h3>🎯 Chamadas para Ação (Botões) - Facebook Ads</h3>
+                    <ul></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
